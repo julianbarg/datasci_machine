@@ -7,5 +7,4 @@
         upgrade: yes
         update_cache: yes
     - name: Install R
-      become: true
       apt: pkg=r-base state=latest
