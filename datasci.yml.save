@@ -1,9 +1,0 @@
----
-- hosts: localhost
-  tasks:
-    - name: update apt list
-      apt: 
-        upgrade: yes
-        update_cache: yes
-    - name: Install R
-apt: pkg=r-base state=latest
