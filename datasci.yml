@@ -8,5 +8,10 @@
         upgrade: 'yes'
     - name: Install R
       apt: 
-        name: r-base
+        name: 
+          - r-base
         state: present
+    - name: Install Zotero
+      become: true
+      community.general.snap:
+        name: zotero-snap
