@@ -1,0 +1,2 @@
+Requires community.general from ansible-galaxy.
+	$ansible-galaxy collection install community.general
