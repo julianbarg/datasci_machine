@@ -6,12 +6,25 @@
       apt: 
         update_cache: yes
         upgrade: 'yes'
+
     - name: Install R
       apt: 
         name: 
           - r-base
         state: present
+
     - name: Install Zotero
       become: true
       community.general.snap:
         name: zotero-snap
+
+    - name: Download Zotero Better Bibtex add-on
+    # https://retorque.re/zotero-better-bibtex/
+      get_url:
+        url: https://github.com/retorquere/zotero-better-bibtex/releases/download/v5.2.117/zotero-better-bibtex-5.2.117.xpi
+        dest: "~/Downloads/zotero-better-bibtex.xpi"
+
+    # - name: Install Zotero Better Bibtex add-on
+    #   shell: 
+    #   args:
+    #     chdir: /~/Downloads
