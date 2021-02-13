@@ -13,18 +13,18 @@
           - r-base
         state: present
 
-    - name: Install Zotero
-      become: true
-      community.general.snap:
-        name: zotero-snap
+    # - name: Download and install Zotero
+    #   become: true
+    #   unarchive:
+    #     src: https://www.zotero.org/download/client/dl?channel=release&platform=linux-x86_64&version=5.0.95
+    #     dest: /opt/zotero
+    #     remote_src: yes
 
-    - name: Download Zotero Better Bibtex add-on
-    # https://retorque.re/zotero-better-bibtex/
+    - name: Download Zotero & Better Bibtex add-on
+    # # https://retorque.re/zotero-better-bibtex/
       get_url:
-        url: https://github.com/retorquere/zotero-better-bibtex/releases/download/v5.2.117/zotero-better-bibtex-5.2.117.xpi
-        dest: "~/Downloads/zotero-better-bibtex.xpi"
-
-    # - name: Install Zotero Better Bibtex add-on
-    #   shell: 
-    #   args:
-    #     chdir: /~/Downloads
+        url: "{{ item }}"
+        dest: "~/Downloads/"
+      loop:
+        - https://www.zotero.org/download/client/dl?channel=release&platform=linux-x86_64&version=5.0.95
+        - https://github.com/retorquere/zotero-better-bibtex/releases/download/v5.2.117/zotero-better-bibtex-5.2.117.xpi
