@@ -7,11 +7,23 @@
         update_cache: yes
         upgrade: 'yes'
 
-    - name: Install R
+    - name: Install various via apt
       apt: 
         name: 
           - r-base
+          # Pdf utilities
+          - ocrmypdf
+          - ghostscript
         state: present
+        
+    - name: Install various via snap
+      become: true
+      community.general.snap:
+        name:
+          - zotero-snap
+          - sublime-merge
+          - sublime-text
+          - pycharm-professional
 
     # - name: Download and install Zotero
     #   become: true
